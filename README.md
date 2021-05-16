@@ -10,13 +10,15 @@ docker build -t klovercloud/elasticsearch:7.12.1 . -f Dockerfile-base-image
 
 **Run**
 ```sh
-docker run --rm -it --name elasticsearch --read-only --tmpfs=/tmp -p 9200:9200 -p 9300:9300 -v /vol/elasticsearch:/usr/share/elasticsearch -e "discovery.type=single-node" --user=1000 klovercloud/elasticsearch:7.12.1
+docker run --rm -it --name elasticsearch --read-only --tmpfs=/tmp -p 9200:9200 -p 9300:9300 -v /vol/elasticsearch:/usr/share/elasticsearch -e "discovery.type=single-node" -e "xpack.security.enabled=true" -e ELASTIC_PASSWORD=keepitsecret --user=1000 klovercloud/elasticsearch:7.12.1
 ```
 
 **Test Connection**
 ```
-curl http://localhost:9200
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Basic <YOUR_BASIC_AUTH_TOKEN>" http://localhost:9200
 ```
+YOUR_BASIC_AUTH_TOKEN=base64(username:password)
+default username: elastic
 
 ####
 ### Run in KloverCloud
@@ -32,6 +34,10 @@ curl http://localhost:9200
 - Set the following Environment Variables
 ```
 discovery.type=single-node
+xpack.security.enabled=true
+```
+- Create a secret for password for default username (elastic)
+```
+ELASTIC_PASSWORD=keepitsecret
 ```
 - Deploy Elasticsearch
-- Use the Internal Endpoint of Elasticsearch server to access it from your applications
