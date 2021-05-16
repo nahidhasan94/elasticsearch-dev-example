@@ -10,7 +10,7 @@ docker build -t klovercloud/elasticsearch:7.12.1 . -f Dockerfile-base-image
 
 **Run**
 ```sh
-docker run --rm -it --name elasticsearch --read-only --tmpfs=/tmp -p 9200:9200 -p 9300:9300 -v /vol/elasticsearch:/usr/share/elasticsearch -e "discovery.type=single-node" -e "xpack.security.enabled=true" -e ELASTIC_PASSWORD=keepitsecret --user=1000 klovercloud/elasticsearch:7.12.1
+docker run --rm -it --name elasticsearch --read-only --tmpfs=/tmp -p 9200:9200 -p 9300:9300 -v /vol/elasticsearch:/usr/share/elasticsearch -e "discovery.type=single-node" --user=1000 klovercloud/elasticsearch:7.12.1
 ```
 
 **Test Connection**
