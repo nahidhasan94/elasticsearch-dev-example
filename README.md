@@ -34,3 +34,4 @@ curl http://localhost:9200
 discovery.type=single-node
 ```
 - Deploy Elasticsearch
+- Use the Internal Endpoint of Elasticsearch server to access it from your applications
