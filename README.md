@@ -1,4 +1,4 @@
-## Elasticsearch Dev Example (Single Node)
+## Elasticsearch Example (Single Node)
 
 ####
 ### Local Testing with Docker
