@@ -15,10 +15,8 @@ docker run --rm -it --name elasticsearch --read-only --tmpfs=/tmp -p 9200:9200 -
 
 **Test Connection**
 ```
-curl -i -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Basic <YOUR_BASIC_AUTH_TOKEN>" http://localhost:9200
+curl http://localhost:9200
 ```
-YOUR_BASIC_AUTH_TOKEN=base64(username:password)
-default username: elastic
 
 ####
 ### Run in KloverCloud
@@ -34,10 +32,5 @@ default username: elastic
 - Set the following Environment Variables
 ```
 discovery.type=single-node
-xpack.security.enabled=true
-```
-- Create a secret for password for default username (elastic)
-```
-ELASTIC_PASSWORD=keepitsecret
 ```
 - Deploy Elasticsearch

@@ -8,6 +8,7 @@ COPY bin/kcinit.sh /kcinit.sh
 RUN chmod +x /kcinit.sh
 
 RUN mkdir -p /tmp-elasticsearch
-RUN cp -ar /usr/share/elasticsearch/. /tmp-elasticsearch/.
-RUN rm -rf /usr/share/elasticsearch
-RUN mkdir -p /usr/share/elasticsearch
+RUN cp -r /usr/share/elasticsearch/. /tmp-elasticsearch/.
+RUN rm -rf /usr/share/elasticsearch/*
+RUN chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
+RUN chown -R elasticsearch:elasticsearch /tmp-elasticsearch
