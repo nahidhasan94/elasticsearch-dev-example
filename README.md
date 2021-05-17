@@ -17,7 +17,7 @@ docker run --rm -it --name elasticsearch --read-only --tmpfs=/tmp -p 9200:9200 -
 ```
 curl -i -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Basic <YOUR_BASIC_AUTH_TOKEN>" http://localhost:9200
 ```
-YOUR_BASIC_AUTH_TOKEN=base64(username:password)
+YOUR_BASIC_AUTH_TOKEN=base64(username:password)\
 default username: elastic
 
 ####
